@@ -7,7 +7,7 @@ import sys
 def main():
     os.environ.setdefault(
             'DJANGO_SETTINGS_MODULE', 
-            'kccbadgeserver.settings.local_settings'
+            'kcc3.settings.local_settings'
     )
     try:
         from django.core.management import execute_from_command_line

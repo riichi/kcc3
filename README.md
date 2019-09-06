@@ -1,4 +1,4 @@
-# kcc-badge-server
+# kcc3
 
 ## Quickstart
 ```
