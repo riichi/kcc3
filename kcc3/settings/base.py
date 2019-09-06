@@ -34,6 +34,7 @@ THIRD_PARTY_APPS = [
 PROJECT_APPS = [
     'badges',
     'common',
+    'chombos',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS

@@ -17,7 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 
+from chombos.viewsets import ChomboViewSet
+
 router = routers.DefaultRouter()
+router.register('chombos', ChomboViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
