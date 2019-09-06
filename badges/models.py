@@ -1,5 +1,6 @@
-from django.contrib.auth.models import User
 from django.db import models
+
+from common.models import Player
 
 
 class Badge(models.Model):
@@ -9,12 +10,4 @@ class Badge(models.Model):
     description = models.TextField()
     image = models.ImageField()
 
-
-class Player(models.Model):
-    user = models.OneToOneField(
-        User, on_delete=models.SET_NULL, null=True, blank=True)
-
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=150)
-
-    badges = models.ManyToManyField(to=Badge)
+    players = models.ManyToManyField(to=Player)
