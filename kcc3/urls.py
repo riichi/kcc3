@@ -17,9 +17,9 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 
+from badges.viewsets import BadgeViewSet
 from chombos.viewsets import ChomboViewSet
 from common.viewsets import PlayerViewSet
-from badges.viewsets import BadgeViewSet
 
 router = routers.DefaultRouter()
 router.register('chombos', ChomboViewSet)

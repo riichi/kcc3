@@ -1,4 +1,5 @@
 from rest_framework import viewsets
+
 from .models import Badge
 from .serializers import BadgeSerializer
 
