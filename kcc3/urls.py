@@ -18,9 +18,13 @@ from django.urls import path, include
 from rest_framework import routers
 
 from chombos.viewsets import ChomboViewSet
+from common.viewsets import PlayerViewSet
+from badges.viewsets import BadgeViewSet
 
 router = routers.DefaultRouter()
 router.register('chombos', ChomboViewSet)
+router.register('badge', BadgeViewSet)
+router.register('player', PlayerViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
