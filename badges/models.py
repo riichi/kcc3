@@ -21,3 +21,9 @@ class Badge(models.Model):
         editable=False)
 
     players = models.ManyToManyField(to=Player, blank=True)
+
+    def get_absolute_url(self):
+        return reverse('badge-detail', kwargs={'slug': self.id})
+
+    def __str__(self):
+        return self.title
