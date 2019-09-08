@@ -1,0 +1,33 @@
+{% extends 'common/base.html' %}
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block body %}
+    <div class="container pt-3">
+        <div class="media">
+            <img src="{{ object.image.url }}" class="mr-3 img-thumbnail"
+                 style="width: 60px;" />
+            <div class="media-body">
+                <h1 class="mt-0">{{ object.title }}</h1>
+                {{ object.description }}
+            </div>
+        </div>
+        <hr/>
+        <h2>Owned by</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">First name</th>
+                    <th scope="col">Last name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for player in object.players.all %}
+                    <tr>
+                        <td>{{ player.first_name }}</td>
+                        <td>{{ player.last_name }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

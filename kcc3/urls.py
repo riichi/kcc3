@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from badges.viewsets import BadgeViewSet
+import badges.urls
 from chombos.viewsets import ChomboViewSet
 from common.viewsets import PlayerViewSet
 
@@ -29,8 +30,9 @@ router.register('badge', BadgeViewSet)
 router.register('player', PlayerViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('api/', include(router.urls)),
     path('api-auth/',
          include('rest_framework.urls', namespace='rest_framework')),
     path('admin/', admin.site.urls),
+    path('badge/', include(badges.urls.urlpatterns)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
