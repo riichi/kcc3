@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('badges', '0003_badge_owners'),
+        ('badges', '0003_auto_20190908_1615'),
     ]
 
     operations = [
