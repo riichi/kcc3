@@ -5,7 +5,7 @@
     <div class="container pt-3">
         <div class="media">
             <img src="{{ object.image.url }}" class="mr-3 img-thumbnail"
-                 style="max-width: 58px; max-height: 58px" />
+                 style="max-width: 58px; max-height: 58px"/>
             <div class="media-body">
                 <h1 class="mt-0">{{ object.title }}</h1>
                 {{ object.description }}
@@ -15,18 +15,22 @@
         <h2>Owned by</h2>
         <table class="table table-striped">
             <thead>
-                <tr>
-                    <th scope="col">First name</th>
-                    <th scope="col">Last name</th>
-                </tr>
+            <tr>
+                <th scope="col">First name</th>
+                <th scope="col">Last name</th>
+            </tr>
             </thead>
             <tbody>
-                {% for player in object.players.all %}
-                    <tr>
-                        <td>{{ player.first_name }}</td>
-                        <td>{{ player.last_name }}</td>
-                    </tr>
-                {% endfor %}
+            {% for player in object.players.all %}
+                <tr>
+                    <td><a href="{% url 'player-detail' player.id %}">
+                        {{ player.first_name }}
+                    </a></td>
+                    <td><a href="{% url 'player-detail' player.id %}">
+                        {{ player.last_name }}
+                    </a></td>
+                </tr>
+            {% endfor %}
             </tbody>
         </table>
     </div>
