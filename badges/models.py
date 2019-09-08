@@ -10,7 +10,7 @@ class Badge(models.Model):
     id = models.SlugField(primary_key=True)
 
     title = models.CharField(max_length=256)
-    description = models.TextField()
+    description = models.TextField(blank=True)
     image = models.ImageField()
     owners = models.ManyToManyField(to=User, blank=True)
 
