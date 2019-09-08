@@ -7,6 +7,7 @@ from badges.models import Badge
 class BadgeAdmin(admin.ModelAdmin):
     prepopulated_fields = {'id': ('title',)}
     autocomplete_fields = ('owners', 'players')
+    readonly_fields = ('token',)
 
     list_display = ('image_tag', 'id', 'title', 'description')
     list_display_links = ('image_tag', 'id', 'title')
@@ -23,7 +24,7 @@ class BadgeAdmin(admin.ModelAdmin):
         }),
         ('Endpoint', {
             'classes': ('collapse',),
-            'fields': ('endpoint_url', 'refresh_interval'),
+            'fields': ('endpoint_url', 'refresh_interval', 'token'),
         }),
     )
 
@@ -31,7 +32,6 @@ class BadgeAdmin(admin.ModelAdmin):
         return format_html('<img src="{}" style="max-width: 40px; max-height: 40px;" />'.format(obj.image.url))
 
     image_tag.short_description = 'Image'
-
 
 
 admin.site.register(Badge, BadgeAdmin)

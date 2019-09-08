@@ -14,8 +14,8 @@ class Badge(models.Model):
     image = models.ImageField()
     owners = models.ManyToManyField(to=User, blank=True)
 
-    endpoint_url = models.URLField(null=True)
-    refresh_interval = models.DurationField(null=True)
+    endpoint_url = models.URLField(null=True, blank=True)
+    refresh_interval = models.DurationField(null=True, blank=True)
     token = models.CharField(
         null=True, max_length=MAX_TOKEN_LENGTH, default=generate_token,
         editable=False)
