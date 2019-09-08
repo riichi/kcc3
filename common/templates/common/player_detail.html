@@ -1,0 +1,25 @@
+{% extends 'common/base.html' %}
+{% block title %}{{ object.first_name }} {{ object.last_name }}{% endblock %}
+
+{% block body %}
+    <div class="container pt-3">
+        <h1>{{ object.first_name }} {{ object.last_name }}</h1>
+        <hr/>
+        <h2>Badges</h2>
+        {% spaceless %}
+            <div style="max-width: 318px; padding:2px;" class="border rounded
+             d-inline-block">
+                {% for badge in object.badge_set.all %}
+                    <div style="width:48px; height: 48px; margin: 2px;"
+                         class="d-inline-block text-center">
+                        <a href="{% url 'badge-detail' badge.id %}">
+                            <img src="{{ badge.image.url }}" class="kcc-badge"
+                                 title="{{ badge.title }}"
+                            />
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endspaceless %}
+    </div>
+{% endblock %}

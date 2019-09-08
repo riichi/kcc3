@@ -13,15 +13,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from django.conf import settings
-from django.conf.urls.static import static
 
-from badges.viewsets import BadgeViewSet
 import badges.urls
+from badges.viewsets import BadgeViewSet
 from chombos.viewsets import ChomboViewSet
+import common.urls
 from common.viewsets import PlayerViewSet
 
 router = routers.DefaultRouter()
@@ -35,4 +36,5 @@ urlpatterns = [
          include('rest_framework.urls', namespace='rest_framework')),
     path('admin/', admin.site.urls),
     path('badge/', include(badges.urls.urlpatterns)),
+    path('', include(common.urls.urlpatterns)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
