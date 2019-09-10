@@ -4,6 +4,15 @@
 {% block body %}
     <div class="container pt-3">
         <h1>{{ object.first_name }} {{ object.last_name }}</h1>
+        USMA ID:
+        {% if object.usma_id %}
+            <a href="https://ranking.cvgo.re/ranking/player/{{ object.usma_id }}"
+               target="_blank" class="font-weight-bold">
+                {{ object.usma_id }}
+            </a>
+        {% else %}
+            <span class="font-italic">None</span>
+        {% endif %}
         <hr/>
         <h2>Badges</h2>
         {% spaceless %}
