@@ -6,9 +6,10 @@
         <h1>{{ object.first_name }} {{ object.last_name }}</h1>
         USMA ID:
         {% if object.usma_id %}
+            <span class="font-weight-bold">{{ object.usma_id }}</span>
             <a href="https://ranking.cvgo.re/ranking/player/{{ object.usma_id }}"
-               target="_blank" class="font-weight-bold">
-                {{ object.usma_id }}
+               target="_blank">
+                (ranking)
             </a>
         {% else %}
             <span class="font-italic">None</span>
