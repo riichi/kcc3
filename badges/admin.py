@@ -35,7 +35,12 @@ class BadgeAdmin(admin.ModelAdmin):
         return obj.is_automatic
     automatic.boolean = True
 
-    image_tag.short_description = 'Image'
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+
+        if request.user.is_superuser:
+            return qs
+        return qs.filter(owners=request.user)
 
 
 admin.site.register(Badge, BadgeAdmin)
