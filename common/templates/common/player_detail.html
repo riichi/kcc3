@@ -14,6 +14,13 @@
         {% else %}
             <span class="font-italic">None</span>
         {% endif %}
+        <br>
+        Discord ID:
+        {% if object.discord_id %}
+            <span class="font-weight-bold">{{ object.discord_id }}</span>
+        {% else %}
+            <span class="font-italic">None</span>
+        {% endif %}
         <hr/>
         <h2>Badges</h2>
         {% spaceless %}

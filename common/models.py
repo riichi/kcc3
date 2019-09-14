@@ -9,7 +9,9 @@ class Player(models.Model):
 
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=150)
-    usma_id = models.CharField(max_length=30, null=True)
+
+    usma_id = models.CharField(max_length=30, null=True, blank=True)
+    discord_id = models.CharField(max_length=30, null=True, blank=True)
 
     def get_absolute_url(self):
         return reverse('player-detail', kwargs={'pk': self.pk})
