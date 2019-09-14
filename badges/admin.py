@@ -29,10 +29,15 @@ class BadgeAdmin(admin.ModelAdmin):
     )
 
     def image_tag(self, obj):
-        return format_html('<img src="{}" style="max-width: 40px; max-height: 40px;" />'.format(obj.image.url))
+        return format_html(
+            f'<img src="{obj.image.url}"'
+            f' style="max-width: 40px; max-height: 40px;" />')
+
+    image_tag.short_description = 'Image'
 
     def automatic(self, obj):
         return obj.is_automatic
+
     automatic.boolean = True
 
     def get_queryset(self, request):
