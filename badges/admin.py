@@ -31,7 +31,7 @@ class BadgeAdmin(admin.ModelAdmin):
     def image_tag(self, obj):
         return format_html(
             f'<img src="{obj.image.url}"'
-            f' style="max-width: 40px; max-height: 40px;" />')
+            f' style="max-width: 48px; max-height: 48px;" />')
 
     image_tag.short_description = 'Image'
 
