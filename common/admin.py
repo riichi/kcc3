@@ -4,8 +4,8 @@ from common.models import Player
 
 
 class PlayerAdmin(admin.ModelAdmin):
-    search_fields = ('first_name', 'last_name')
-    list_display = ('first_name', 'last_name')
+    search_fields = ('user', 'first_name', 'last_name', 'usma_id', 'discord_id')
+    list_display = ('user', 'first_name', 'last_name', 'usma_id', 'discord_id')
     list_display_links = ('first_name', 'last_name')
 
 
