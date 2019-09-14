@@ -9,7 +9,7 @@ class BadgeAdmin(admin.ModelAdmin):
     autocomplete_fields = ('owners', 'players')
     readonly_fields = ('token',)
 
-    list_display = ('image_tag', 'id', 'title', 'description')
+    list_display = ('image_tag', 'id', 'title', 'automatic', 'description')
     list_display_links = ('image_tag', 'id', 'title')
     list_filter = ('owners',)
     search_fields = ('id', 'title', 'description')
@@ -30,6 +30,10 @@ class BadgeAdmin(admin.ModelAdmin):
 
     def image_tag(self, obj):
         return format_html('<img src="{}" style="max-width: 40px; max-height: 40px;" />'.format(obj.image.url))
+
+    def automatic(self, obj):
+        return obj.is_automatic
+    automatic.boolean = True
 
     image_tag.short_description = 'Image'
 

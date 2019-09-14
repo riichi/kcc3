@@ -4,7 +4,7 @@
 
 
 {% block object-tools-items %}
-    {% if original and original.endpoint_url and original.token %}
+    {% if original and original.is_automatic %}
         {# Only show if changing and the endpoint URL was provided #}
         <li>
             <a href="{% url 'update-badge-bearers' slug=original.id %}">

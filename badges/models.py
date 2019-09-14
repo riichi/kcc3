@@ -32,6 +32,10 @@ class Badge(models.Model):
     def get_absolute_url(self):
         return reverse('badge-detail', kwargs={'slug': self.id})
 
+    @property
+    def is_automatic(self):
+        return self.endpoint_url is not None and self.token is not None
+
     def save(self, *args, **kwargs):
         if self.refresh_interval != self.__original_refresh_interval:
             self.__update_task()
