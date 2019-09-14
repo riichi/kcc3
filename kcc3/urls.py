@@ -34,7 +34,13 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('api-auth/',
          include('rest_framework.urls', namespace='rest_framework')),
+
+    path('admin/badges/', include(badges.urls.admin_urlpatters)),
     path('admin/', admin.site.urls),
+
+    path('badge-clients/badges/',
+         include(badges.urls.badgeclients_urlpatterns)),
+
     path('badge/', include(badges.urls.urlpatterns)),
     path('', include(common.urls.urlpatterns)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
