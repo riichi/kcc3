@@ -23,10 +23,10 @@
             <tbody>
             {% for player in object.players.all %}
                 <tr>
-                    <td><a href="{% url 'player-detail' player.id %}">
+                    <td><a href="{{ player.get_absolute_url }}">
                         {{ player.first_name }}
                     </a></td>
-                    <td><a href="{% url 'player-detail' player.id %}">
+                    <td><a href="{{ player.get_absolute_url }}">
                         {{ player.last_name }}
                     </a></td>
                 </tr>
