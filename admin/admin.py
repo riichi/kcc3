@@ -4,7 +4,7 @@ from django.contrib import admin
 
 
 class Kcc3AdminSite(admin.AdminSite):
-    index_title = 'KCC3 Administration'
+    index_title = 'Home'
 
     def get_app_list(self, request):
         apps = super().get_app_list(request)
