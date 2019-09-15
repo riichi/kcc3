@@ -1,5 +1,4 @@
-from badges.local_badge_client import (
-    LocalBadgeClient, PlayerIterable)
+from badges.local_badge_client import LocalBadgeClient, PlayerIterable
 from badgeupdater.models import BadgeUpdateRequest
 from common.models import Player
 
