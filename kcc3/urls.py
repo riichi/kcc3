@@ -20,9 +20,10 @@ from django.urls import path, include
 from rest_framework import routers
 
 import badges.urls
+import chombos.urls
+import common.urls
 from badges.viewsets import BadgeViewSet
 from chombos.viewsets import ChomboViewSet
-import common.urls
 from common.viewsets import PlayerViewSet
 
 router = routers.DefaultRouter()
@@ -40,6 +41,8 @@ urlpatterns = [
 
     path('badge-clients/badges/',
          include(badges.urls.badgeclients_urlpatterns)),
+    path('badge-clients/chombos/',
+         include(chombos.urls.badgeclients_urlpatterns)),
 
     path('badge/', include(badges.urls.urlpatterns)),
     path('', include(common.urls.urlpatterns)),
