@@ -77,7 +77,6 @@ class Badge(models.Model):
             task = PeriodicTask(
                 task='badgeupdater.server.tasks.update_badge_task',
                 kwargs=json.dumps(kwargs))
-            self.periodic_task = task
         else:
             task = self.periodic_task
 
@@ -88,6 +87,7 @@ class Badge(models.Model):
         task.name = f'Update {self.id} badge'
 
         task.save()
+        self.periodic_task = task
 
     def __str__(self):
         return self.title
