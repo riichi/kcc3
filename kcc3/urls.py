@@ -28,8 +28,8 @@ from common.viewsets import PlayerViewSet
 
 router = routers.DefaultRouter()
 router.register('chombos', ChomboViewSet)
-router.register('badge', BadgeViewSet)
-router.register('player', PlayerViewSet)
+router.register('badges', BadgeViewSet)
+router.register('players', PlayerViewSet)
 
 admin_urlpatterns = [
     path('badges/', include(badges.urls.admin_urlpatters)),
