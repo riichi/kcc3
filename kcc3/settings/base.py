@@ -110,3 +110,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
+# Custom settings
+BADGE_IMAGE_MIN_RES = 96
+BADGE_IMAGE_MAX_RES = 512
+BADGE_IMAGE_MAX_SIZE = 256_000

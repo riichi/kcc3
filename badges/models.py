@@ -1,10 +1,18 @@
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 from django_celery_beat.models import PeriodicTask, IntervalSchedule
 
 from badges.token_generator import generate_token, MAX_TOKEN_LENGTH
+from badges.validators import (
+    ImageMinResolutionValidator, ImageSquareValidator,
+    ImageMaxResolutionValidator, MaxFileSizeValidator)
 from common.models import Player
+
+MIN_RES = settings.BADGE_IMAGE_MIN_RES
+MAX_RES = settings.BADGE_IMAGE_MAX_RES
+MAX_SIZE = settings.BADGE_IMAGE_MAX_SIZE
 
 
 class Badge(models.Model):
@@ -12,7 +20,17 @@ class Badge(models.Model):
 
     title = models.CharField(max_length=256)
     description = models.TextField(blank=True)
-    image = models.ImageField()
+    image = models.ImageField(
+        help_text=f'The image must be square between {MIN_RES}x{MIN_RES} and '
+                  f'{MAX_RES}x{MAX_RES} and does not exceed '
+                  f'{MaxFileSizeValidator.human_readable_size(MAX_SIZE)}.',
+        validators=[
+            ImageMinResolutionValidator(MIN_RES),
+            ImageMaxResolutionValidator(MAX_RES),
+            ImageSquareValidator(),
+            MaxFileSizeValidator(MAX_SIZE),
+        ]
+    )
     owners = models.ManyToManyField(to=User, blank=True)
 
     endpoint_url = models.URLField(null=True, blank=True)
