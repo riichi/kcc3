@@ -7,7 +7,7 @@ from rest_framework.status import HTTP_400_BAD_REQUEST
 from badges.models import Badge
 from badgeupdater.client.badge_client import BadgeClient
 from badgeupdater.models import BadgeUpdateRequest
-from common.models import Player
+from players.models import Player
 
 PlayerIterable = Iterable[Union[int, Player]]
 

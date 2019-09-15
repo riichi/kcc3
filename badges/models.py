@@ -10,7 +10,7 @@ from badges.token_generator import generate_token, MAX_TOKEN_LENGTH
 from badges.validators import (
     ImageMinResolutionValidator, ImageMaxResolutionValidator,
     MaxFileSizeValidator, image_square_validator)
-from common.models import Player
+from players.models import Player
 
 MIN_RES = settings.BADGE_IMAGE_MIN_RES
 MAX_RES = settings.BADGE_IMAGE_MAX_RES

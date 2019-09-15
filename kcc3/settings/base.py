@@ -36,7 +36,7 @@ THIRD_PARTY_APPS = [
 PROJECT_APPS = [
     'admin.apps.Kcc3AdminConfig',
     'badges',
-    'common',
+    'players',
     'chombos',
 ]
 

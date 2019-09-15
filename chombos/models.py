@@ -1,6 +1,6 @@
 from django.db import models
 
-from common.models import Player
+from players.models import Player
 
 
 class Chombo(models.Model):

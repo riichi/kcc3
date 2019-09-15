@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from common.models import Player
+from players.models import Player
 
 
 class PlayerAdmin(admin.ModelAdmin):

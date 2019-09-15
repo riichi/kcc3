@@ -9,7 +9,7 @@ class Kcc3AdminSite(admin.AdminSite):
     def get_app_list(self, request):
         apps = super().get_app_list(request)
 
-        grouped_apps = ('badges', 'chombos', 'common')
+        grouped_apps = ('badges', 'chombos', 'players')
         group_filter = lambda x: x['app_label'] in grouped_apps
         first_party = filter(group_filter, apps)
         third_party = itertools.filterfalse(group_filter, apps)

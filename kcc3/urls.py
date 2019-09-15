@@ -21,10 +21,10 @@ from rest_framework import routers
 
 import badges.urls
 import chombos.urls
-import common.urls
+import players.urls
 from badges.viewsets import BadgeViewSet
 from chombos.viewsets import ChomboViewSet
-from common.viewsets import PlayerViewSet
+from players.viewsets import PlayerViewSet
 
 router = routers.DefaultRouter()
 router.register('chombos', ChomboViewSet)
@@ -50,5 +50,5 @@ urlpatterns = [
     path('badge-clients/', include(badgeclients_urlpatterns)),
 
     path('badges/', include(badges.urls.urlpatterns)),
-    path('', include(common.urls.urlpatterns)),
+    path('players/', include(players.urls.urlpatterns)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
