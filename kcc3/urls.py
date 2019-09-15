@@ -49,6 +49,6 @@ urlpatterns = [
     path('admin/', include(admin_urlpatterns)),
     path('badge-clients/', include(badgeclients_urlpatterns)),
 
-    path('badge/', include(badges.urls.urlpatterns)),
+    path('badges/', include(badges.urls.urlpatterns)),
     path('', include(common.urls.urlpatterns)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
