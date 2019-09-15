@@ -6,8 +6,8 @@ from django_celery_beat.models import PeriodicTask, IntervalSchedule
 
 from badges.token_generator import generate_token, MAX_TOKEN_LENGTH
 from badges.validators import (
-    ImageMinResolutionValidator, ImageSquareValidator,
-    ImageMaxResolutionValidator, MaxFileSizeValidator)
+    ImageMinResolutionValidator, ImageMaxResolutionValidator,
+    MaxFileSizeValidator, image_square_validator)
 from common.models import Player
 
 MIN_RES = settings.BADGE_IMAGE_MIN_RES
@@ -27,7 +27,7 @@ class Badge(models.Model):
         validators=[
             ImageMinResolutionValidator(MIN_RES),
             ImageMaxResolutionValidator(MAX_RES),
-            ImageSquareValidator(),
+            image_square_validator,
             MaxFileSizeValidator(MAX_SIZE),
         ]
     )
