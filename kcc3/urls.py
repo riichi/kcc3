@@ -31,18 +31,23 @@ router.register('chombos', ChomboViewSet)
 router.register('badge', BadgeViewSet)
 router.register('player', PlayerViewSet)
 
+admin_urlpatterns = [
+    path('badges/', include(badges.urls.admin_urlpatters)),
+    path('', admin.site.urls),
+]
+
+badgeclients_urlpatterns = [
+    path('badges/', include(badges.urls.badgeclients_urlpatterns)),
+    path('chombos/', include(chombos.urls.badgeclients_urlpatterns)),
+]
+
 urlpatterns = [
     path('api/', include(router.urls)),
     path('api-auth/',
          include('rest_framework.urls', namespace='rest_framework')),
 
-    path('admin/badges/', include(badges.urls.admin_urlpatters)),
-    path('admin/', admin.site.urls),
-
-    path('badge-clients/badges/',
-         include(badges.urls.badgeclients_urlpatterns)),
-    path('badge-clients/chombos/',
-         include(chombos.urls.badgeclients_urlpatterns)),
+    path('admin/', include(admin_urlpatterns)),
+    path('badge-clients/', include(badgeclients_urlpatterns)),
 
     path('badge/', include(badges.urls.urlpatterns)),
     path('', include(common.urls.urlpatterns)),
