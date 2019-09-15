@@ -22,7 +22,7 @@ class Badge(models.Model):
     description = models.TextField(blank=True)
     image = models.ImageField(
         help_text=f'The image must be square between {MIN_RES}x{MIN_RES} and '
-                  f'{MAX_RES}x{MAX_RES} and does not exceed '
+                  f'{MAX_RES}x{MAX_RES} and must not exceed '
                   f'{MaxFileSizeValidator.human_readable_size(MAX_SIZE)}.',
         validators=[
             ImageMinResolutionValidator(MIN_RES),
