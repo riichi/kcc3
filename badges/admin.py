@@ -16,18 +16,6 @@ class BadgeAdmin(admin.ModelAdmin):
 
     view_on_site = True
 
-    fieldsets = (
-        (None, {
-            'fields': (
-                'title', 'id', 'description', 'image', 'owners', 'players'
-            )
-        }),
-        ('Endpoint', {
-            'classes': ('collapse',),
-            'fields': ('endpoint_url', 'refresh_interval', 'token'),
-        }),
-    )
-
     def image_tag(self, obj):
         return format_html(
             f'<img src="{obj.image.url}"'
@@ -46,6 +34,39 @@ class BadgeAdmin(admin.ModelAdmin):
         if request.user.is_superuser:
             return qs
         return qs.filter(owners=request.user)
+
+    def get_fieldsets(self, request, obj=None):
+        general_fields = ['title', 'id', 'description', 'image']
+        if request.user.is_superuser or obj is not None:
+            general_fields.append('owners')
+        general_fields += ['players']
+
+        return (
+            (None, {
+                'fields': general_fields
+            }),
+            ('Endpoint', {
+                'classes': ('collapse',),
+                'fields': ('endpoint_url', 'refresh_interval', 'token'),
+            }),
+        )
+
+    def get_changeform_initial_data(self, request):
+        return {'owners': (request.user,)}
+
+    def get_readonly_fields(self, request, obj=None):
+        fields = super(BadgeAdmin, self).get_readonly_fields(request, obj)
+
+        if not request.user.is_superuser:
+            fields = fields + ('owners',)
+
+        return fields
+
+    def save_related(self, request, form, formsets, change):
+        super(BadgeAdmin, self).save_related(request, form, formsets, change)
+
+        if not form.instance.owners.exists():
+            form.instance.owners.add(request.user)
 
 
 admin.site.register(Badge, BadgeAdmin)
