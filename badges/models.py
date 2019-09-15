@@ -16,7 +16,7 @@ MAX_SIZE = settings.BADGE_IMAGE_MAX_SIZE
 
 
 class Badge(models.Model):
-    id = models.SlugField(primary_key=True)
+    id = models.SlugField(primary_key=True, verbose_name='ID')
 
     title = models.CharField(max_length=256)
     description = models.TextField(blank=True)
@@ -33,7 +33,8 @@ class Badge(models.Model):
     )
     owners = models.ManyToManyField(to=User, blank=True)
 
-    endpoint_url = models.URLField(null=True, blank=True)
+    endpoint_url = models.URLField(
+        null=True, blank=True, verbose_name='Endpoint URL')
     refresh_interval = models.DurationField(null=True, blank=True)
     token = models.CharField(
         null=True, max_length=MAX_TOKEN_LENGTH, default=generate_token,
