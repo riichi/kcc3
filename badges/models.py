@@ -1,3 +1,5 @@
+import json
+
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
@@ -69,7 +71,12 @@ class Badge(models.Model):
 
     def __create_or_update_task_object(self):
         if self.periodic_task is None:
-            task = PeriodicTask(task='kcc3.celery.debug_task')
+            kwargs = {
+                'badge_id': self.id
+            }
+            task = PeriodicTask(
+                task='badgeupdater.server.tasks.update_badge_task',
+                kwargs=json.dumps(kwargs))
             self.periodic_task = task
         else:
             task = self.periodic_task
