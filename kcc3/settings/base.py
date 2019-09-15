@@ -20,7 +20,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(
 # Application definition
 
 DJANGO_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -34,6 +33,7 @@ THIRD_PARTY_APPS = [
 ]
 
 PROJECT_APPS = [
+    'admin.apps.Kcc3AdminConfig',
     'badges',
     'common',
     'chombos',
