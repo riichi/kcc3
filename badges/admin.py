@@ -1,7 +1,30 @@
 from django.contrib import admin
+from django.contrib.admin import SimpleListFilter
+from django.db.models import Q
 from django.utils.html import format_html
 
 from badges.models import Badge
+
+
+class IsAutomaticFilter(SimpleListFilter):
+    title = 'automatic'
+    parameter_name = 'automatic'
+
+    filter_q = Q(endpoint_url__isnull=True) | Q(endpoint_url__exact='')
+
+    def lookups(self, request, model_admin):
+        return (
+            ('1', 'Yes'),
+            ('0', 'No'),
+        )
+
+    def queryset(self, request, queryset):
+        if self.value() == '1':
+            return queryset.exclude(self.filter_q)
+        elif self.value() == '0':
+            return queryset.filter(self.filter_q)
+
+        return queryset
 
 
 class BadgeAdmin(admin.ModelAdmin):
@@ -11,7 +34,7 @@ class BadgeAdmin(admin.ModelAdmin):
 
     list_display = ('image_tag', 'id', 'title', 'automatic', 'description')
     list_display_links = ('image_tag', 'id', 'title')
-    list_filter = ('owners',)
+    list_filter = ('owners', IsAutomaticFilter)
     search_fields = ('id', 'title', 'description')
 
     view_on_site = True
