@@ -18,16 +18,20 @@
             <tr>
                 <th scope="col">First name</th>
                 <th scope="col">Last name</th>
+                <th scope="col">Nickname</th>
             </tr>
             </thead>
             <tbody>
             {% for player in object.players.all %}
                 <tr>
                     <td><a href="{{ player.get_absolute_url }}">
-                        {{ player.first_name }}
+                        {{ player.first_name|default:"–" }}
                     </a></td>
                     <td><a href="{{ player.get_absolute_url }}">
-                        {{ player.last_name }}
+                        {{ player.last_name|default:"–" }}
+                    </a></td>
+                    <td><a href="{{ player.get_absolute_url }}">
+                        {{ player.nickname|default:"–" }}
                     </a></td>
                 </tr>
             {% endfor %}
