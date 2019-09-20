@@ -40,11 +40,11 @@ badge client can make use of KCC3's RESTful API to get all the data needed for
 granting the badge.
 
 The communication uses conveniently defined models for data interchange
-(with accompanying Serializer classes) as well as HMAC for verifying message
-integrity and authentication. To implement such service, one can either use
+(with accompanying Serializer classes) as well as generated token for verifying
+message authentication. To implement such service, one can either use
 a small library inside `/badgeupdater/client/` (as well as common files
 inside `/badgeupdater/`), or just implement the protocol (which is as easy
-as parsing/serializing simple JSONs and HMAC verification).
+as parsing/serializing simple JSONs and comparing tokens).
 
 First-parties can use convenient class called LocalBadgeClient and access
 the database directly, without the API as a middleware.
