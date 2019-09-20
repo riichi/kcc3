@@ -1,9 +1,9 @@
 {% extends 'common/base.html' %}
-{% block title %}{{ object.first_name }} {{ object.last_name }}{% endblock %}
+{% block title %}{{ object }}{% endblock %}
 
 {% block body %}
     <div class="container pt-3">
-        <h1>{{ object.first_name }} {{ object.last_name }}</h1>
+        <h1>{{ object }}</h1>
         USMA ID:
         {% if object.usma_id %}
             <span class="font-weight-bold">{{ object.usma_id }}</span>
