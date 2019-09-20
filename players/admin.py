@@ -12,7 +12,7 @@ class PlayerAdmin(admin.ModelAdmin):
     list_display = (
         'id', 'user', 'first_name', 'last_name', 'nickname', 'usma_id',
         'discord_id')
-    list_display_links = ('first_name', 'last_name', 'nickname')
+    list_display_links = ('id', 'first_name', 'last_name', 'nickname')
     ordering = ('id',)
 
 
