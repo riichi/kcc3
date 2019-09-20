@@ -36,6 +36,7 @@ class BadgeAdmin(admin.ModelAdmin):
     list_display_links = ('image_tag', 'id', 'title')
     list_filter = ('owners', IsAutomaticFilter)
     search_fields = ('id', 'title', 'description')
+    ordering = ('id',)
 
     view_on_site = True
 
