@@ -5,15 +5,12 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from badgeupdater.client.auth import HMACAuth
-from badgeupdater.client.parsers import BodyJSONParser
 from badgeupdater.models import BadgeUpdateRequest, BadgeUpdateResponse
 from badgeupdater.serializers import (
     BadgeUpdateRequestSerializer, BadgeUpdateResponseSerializer)
 
 
 class BadgeClient(APIView):
-    parser_classes = (BodyJSONParser,)
-
     def post(self, request: Request, format=None):
         update_request = self.__get_update_request(request)
         response = self.__create_response(update_request)
