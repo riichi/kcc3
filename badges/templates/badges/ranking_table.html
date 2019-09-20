@@ -1,0 +1,15 @@
+{% extends 'players/player_table.html' %}
+
+{% block before_header %}
+    <th scope="col">Rank</th>
+    <th scope="col">Badges</th>
+{% endblock %}
+
+{% block before_row %}
+    <td>
+        {{ player.rank }}
+    </td>
+    <td>
+        {{ player.num_badges }}
+    </td>
+{% endblock %}

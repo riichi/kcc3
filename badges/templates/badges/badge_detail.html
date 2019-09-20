@@ -13,29 +13,6 @@
         </div>
         <hr/>
         <h2>Owned by</h2>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">First name</th>
-                <th scope="col">Last name</th>
-                <th scope="col">Nickname</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for player in object.players.all %}
-                <tr>
-                    <td><a href="{{ player.get_absolute_url }}">
-                        {{ player.first_name|default:"–" }}
-                    </a></td>
-                    <td><a href="{{ player.get_absolute_url }}">
-                        {{ player.last_name|default:"–" }}
-                    </a></td>
-                    <td><a href="{{ player.get_absolute_url }}">
-                        {{ player.nickname|default:"–" }}
-                    </a></td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+        {% include 'players/player_table.html' with players=object.players.all %}
     </div>
 {% endblock %}

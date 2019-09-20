@@ -1,0 +1,42 @@
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            {% block before_header %}{% endblock %}
+            <th scope="col" class="d-none d-sm-table-cell">First name</th>
+            <th scope="col" class="d-none d-sm-table-cell">Last name</th>
+            <th scope="col" class="d-none d-sm-table-cell">Nickname</th>
+            <th scope="col" class="d-table-cell d-sm-none">Player</th>
+            {% block after_header %}{% endblock %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for player in players %}
+            <tr>
+                {% block before_row %}{% endblock %}
+                <td class="d-none d-sm-table-cell">
+                    <a href="{{ player.get_absolute_url }}">
+                        {{ player.first_name|default:"–" }}
+                    </a>
+                </td>
+                <td class="d-none d-sm-table-cell">
+                    <a href="{{ player.get_absolute_url }}">
+                        {{ player.last_name|default:"–" }}
+                    </a>
+                </td>
+                <td class="d-none d-sm-table-cell">
+                    <a href="{{ player.get_absolute_url }}">
+                        {{ player.nickname|default:"–" }}
+                    </a>
+                </td>
+                <td class="d-table-cell d-sm-none">
+                    <a href="{{ player.get_absolute_url }}">
+                        {{ player }}
+                    </a>
+                </td>
+            </tr>
+            {% block after_row %}{% endblock %}
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
