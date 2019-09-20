@@ -7,6 +7,6 @@ class PlayerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Player
         fields = [
-            'id', 'first_name', 'last_name', 'badge_set', 'usma_id',
-            'discord_id'
+            'id', 'first_name', 'last_name', 'nickname', 'badge_set',
+            'usma_id', 'discord_id'
         ]
