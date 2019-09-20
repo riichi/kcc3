@@ -5,6 +5,8 @@ from django.urls import reverse
 
 
 class Player(models.Model):
+    id = models.SlugField(primary_key=True, verbose_name='ID')
+
     user = models.OneToOneField(
         User, on_delete=models.SET_NULL, null=True, blank=True)
 
