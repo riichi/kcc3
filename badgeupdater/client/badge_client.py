@@ -36,7 +36,7 @@ class BadgeClient(APIView):
     def get_authenticators(self):
         return HMACAuth(self),
 
-    def get_badge_player_ids(self, request: BadgeUpdateRequest) -> List[int]:
+    def get_badge_player_ids(self, request: BadgeUpdateRequest) -> List[str]:
         raise NotImplementedError
 
     def get_token(self, badge_id: str) -> str:

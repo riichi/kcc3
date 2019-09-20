@@ -9,7 +9,7 @@ from badgeupdater.client.badge_client import BadgeClient
 from badgeupdater.models import BadgeUpdateRequest
 from players.models import Player
 
-PlayerIterable = Iterable[Union[int, Player]]
+PlayerIterable = Iterable[Union[str, Player]]
 
 
 class BadgeDoesNotExist(APIException):
@@ -24,7 +24,7 @@ class LocalBadgeClient(BadgeClient, ABC):
         except Badge.DoesNotExist:
             raise BadgeDoesNotExist
 
-    def get_badge_player_ids(self, request: BadgeUpdateRequest) -> List[int]:
+    def get_badge_player_ids(self, request: BadgeUpdateRequest) -> List[str]:
         return list(map(
             lambda x: x.id if isinstance(x, Player) else x,
             self.get_badge_players(request)))

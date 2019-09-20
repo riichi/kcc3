@@ -11,7 +11,7 @@ class BadgeUpdateRequestSerializer(serializers.Serializer):
 
 
 class BadgeUpdateResponseSerializer(serializers.Serializer):
-    players = serializers.ListField(child=serializers.IntegerField())
+    players = serializers.ListField(child=serializers.SlugField())
 
     def create(self, validated_data) -> BadgeUpdateResponse:
         return BadgeUpdateResponse(**validated_data)

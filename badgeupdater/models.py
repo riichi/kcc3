@@ -9,4 +9,4 @@ class BadgeUpdateRequest:
 
 @dataclass
 class BadgeUpdateResponse:
-    players: List[int]
+    players: List[str]
