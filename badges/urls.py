@@ -1,7 +1,11 @@
 from django.urls import path
 
 from badges.badgeclients import TestBadgeClient
-from .views import BadgeDetailView, UpdateBadgeBearersView
+from .views import BadgeDetailView, UpdateBadgeBearersView, BadgeRankingView
+
+global_urlpatterns = [
+    path('', BadgeRankingView.as_view(), name='badge-ranking'),
+]
 
 urlpatterns = [
     path('<slug:slug>/', BadgeDetailView.as_view(), name='badge-detail'),

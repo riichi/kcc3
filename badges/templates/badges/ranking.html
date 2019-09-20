@@ -1,0 +1,40 @@
+{% extends 'common/base.html' %}
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block body %}
+    <div class="container pt-3">
+        <h2>Ranking</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Rank</th>
+                <th scope="col">Badges</th>
+                <th scope="col">First name</th>
+                <th scope="col">Last name</th>
+                <th scope="col">Nickname</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for player in object_list %}
+                <tr>
+                    <td>
+                        {{ player.rank }}
+                    </td>
+                    <td>
+                        {{ player.num_badges }}
+                    </td>
+                    <td><a href="{{ player.get_absolute_url }}">
+                        {{ player.first_name|default:"–" }}
+                    </a></td>
+                    <td><a href="{{ player.get_absolute_url }}">
+                        {{ player.last_name|default:"–" }}
+                    </a></td>
+                    <td><a href="{{ player.get_absolute_url }}">
+                        {{ player.nickname|default:"–" }}
+                    </a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
