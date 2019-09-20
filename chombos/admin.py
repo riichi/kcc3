@@ -7,6 +7,7 @@ class ChomboAdmin(admin.ModelAdmin):
     search_fields = ('player', 'timestamp', 'comment')
     list_display = ('player', 'timestamp', 'comment')
     list_display_links = ('player', 'timestamp')
+    ordering = ('-timestamp',)
 
 
 admin.site.register(Chombo, ChomboAdmin)
