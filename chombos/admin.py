@@ -8,6 +8,7 @@ class ChomboAdmin(admin.ModelAdmin):
     list_display = ('player', 'timestamp', 'comment')
     list_display_links = ('player', 'timestamp')
     ordering = ('-timestamp',)
+    date_hierarchy = 'timestamp'
 
 
 admin.site.register(Chombo, ChomboAdmin)
