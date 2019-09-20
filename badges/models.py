@@ -3,6 +3,8 @@ import json
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
 from django.urls import reverse
 from django_celery_beat.models import PeriodicTask, IntervalSchedule
 
@@ -91,3 +93,9 @@ class Badge(models.Model):
 
     def __str__(self):
         return self.title
+
+
+@receiver(post_delete, sender=Badge)
+def post_delete_user(sender, instance, *args, **kwargs):
+    if instance.periodic_task:
+        instance.periodic_task.delete()
