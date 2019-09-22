@@ -37,11 +37,10 @@ class Badge(models.Model):
     )
     owners = models.ManyToManyField(to=User, blank=True)
 
-    endpoint_url = models.URLField(
-        null=True, blank=True, verbose_name='Endpoint URL')
+    endpoint_url = models.URLField(blank=True, verbose_name='Endpoint URL')
     refresh_interval = models.DurationField(null=True, blank=True)
     token = models.CharField(
-        null=True, max_length=MAX_TOKEN_LENGTH, default=generate_token,
+        blank=True, max_length=MAX_TOKEN_LENGTH, default=generate_token,
         editable=False)
     periodic_task = models.OneToOneField(
         to=PeriodicTask, on_delete=models.CASCADE, null=True, editable=False)

@@ -10,14 +10,14 @@ class Player(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.SET_NULL, null=True, blank=True)
 
-    first_name = models.CharField(max_length=30, null=True, blank=True)
-    last_name = models.CharField(max_length=150, null=True, blank=True)
-    nickname = models.CharField(max_length=50, null=True, blank=True)
+    first_name = models.CharField(max_length=30, blank=True)
+    last_name = models.CharField(max_length=150, blank=True)
+    nickname = models.CharField(max_length=50, blank=True)
 
     usma_id = models.CharField(
-        max_length=30, null=True, blank=True, verbose_name='USMA ID')
+        max_length=30, blank=True, verbose_name='USMA ID')
     discord_id = models.CharField(
-        max_length=30, null=True, blank=True, verbose_name='Discord ID')
+        max_length=30, blank=True, verbose_name='Discord ID')
 
     def clean(self):
         has_name = self.first_name and self.last_name
