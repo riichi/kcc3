@@ -3,6 +3,7 @@ import json
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
+from django.db.models import Q
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
 from django.urls import reverse
@@ -17,6 +18,16 @@ from players.models import Player
 MIN_RES = settings.BADGE_IMAGE_MIN_RES
 MAX_RES = settings.BADGE_IMAGE_MAX_RES
 MAX_SIZE = settings.BADGE_IMAGE_MAX_SIZE
+
+
+class BadgeQuerySet(models.QuerySet):
+    not_automatic_q = Q(endpoint_url__isnull=True) | Q(endpoint_url__exact='')
+
+    def automatic(self):
+        return self.exclude(self.not_automatic_q)
+
+    def not_automatic(self):
+        return self.filter(self.not_automatic_q)
 
 
 class Badge(models.Model):
@@ -46,6 +57,8 @@ class Badge(models.Model):
         to=PeriodicTask, on_delete=models.CASCADE, null=True, editable=False)
 
     players = models.ManyToManyField(to=Player, blank=True)
+
+    objects = BadgeQuerySet.as_manager()
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

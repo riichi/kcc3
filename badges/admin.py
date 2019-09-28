@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django.contrib.admin import SimpleListFilter
-from django.db.models import Q
 from django.utils.html import format_html
 
 from badges.models import Badge
@@ -10,8 +9,6 @@ class IsAutomaticFilter(SimpleListFilter):
     title = 'automatic'
     parameter_name = 'automatic'
 
-    filter_q = Q(endpoint_url__isnull=True) | Q(endpoint_url__exact='')
-
     def lookups(self, request, model_admin):
         return (
             ('1', 'Yes'),
@@ -20,9 +17,9 @@ class IsAutomaticFilter(SimpleListFilter):
 
     def queryset(self, request, queryset):
         if self.value() == '1':
-            return queryset.exclude(self.filter_q)
+            return queryset.automatic()
         elif self.value() == '0':
-            return queryset.filter(self.filter_q)
+            return queryset.not_automatic()
 
         return queryset
 
