@@ -1,5 +1,7 @@
 from typing import List
 
+from rest_framework.decorators import permission_classes
+from rest_framework.permissions import AllowAny
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -10,6 +12,7 @@ from badgeupdater.serializers import (
     BadgeUpdateRequestSerializer, BadgeUpdateResponseSerializer)
 
 
+@permission_classes((AllowAny,))
 class BadgeClient(APIView):
     def post(self, request: Request, format=None):
         update_request = self.__get_update_request(request)
