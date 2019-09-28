@@ -69,7 +69,7 @@ class Badge(models.Model):
 
     @property
     def is_automatic(self):
-        return self.endpoint_url and self.token
+        return bool(self.endpoint_url and self.token)
 
     def save(self, *args, **kwargs):
         if self.refresh_interval != self.__original_refresh_interval:
