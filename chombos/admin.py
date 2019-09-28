@@ -4,7 +4,9 @@ from chombos.models import Chombo
 
 
 class ChomboAdmin(admin.ModelAdmin):
-    search_fields = ('player', 'timestamp', 'comment')
+    search_fields = (
+        'player__id', 'player__first_name', 'player__last_name',
+        'player__nickname', 'timestamp', 'comment')
     list_display = ('player', 'timestamp', 'comment')
     list_display_links = ('player', 'timestamp')
     ordering = ('-timestamp',)
