@@ -11,6 +11,7 @@ class ChomboAdmin(admin.ModelAdmin):
     list_display = ('player', 'timestamp', 'comment')
     list_display_links = ('player', 'timestamp')
     list_filter = (
+        'timestamp',
         ('player', admin.RelatedOnlyFieldListFilter),
     )
     ordering = ('-timestamp',)
