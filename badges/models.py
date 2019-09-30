@@ -6,8 +6,8 @@ from django.db import models
 from django.db.models import Q
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
-from django.urls import reverse
 from django_celery_beat.models import PeriodicTask, IntervalSchedule
+from django_hosts import reverse
 
 from badges.token_generator import generate_token, MAX_TOKEN_LENGTH
 from badges.validators import (
@@ -65,7 +65,7 @@ class Badge(models.Model):
         self.__original_refresh_interval = self.refresh_interval
 
     def get_absolute_url(self):
-        return reverse('badge-detail', kwargs={'slug': self.id})
+        return reverse('badge-detail', kwargs={'slug': self.id}, host='root')
 
     @property
     def is_automatic(self):

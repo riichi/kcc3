@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.urls import reverse
+from django_hosts import reverse
 
 
 class Player(models.Model):
@@ -28,7 +28,7 @@ class Player(models.Model):
                 {'first_name': 'Either full name, or nickname is required'})
 
     def get_absolute_url(self):
-        return reverse('player-detail', kwargs={'pk': self.pk})
+        return reverse('player-detail', kwargs={'pk': self.pk}, host='root')
 
     def __str__(self):
         s = ''
