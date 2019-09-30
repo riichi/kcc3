@@ -1,0 +1,18 @@
+{% extends 'common/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Hall of Yakumans{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/yakumans.css' %}">
+{% endblock %}
+
+
+{% block body %}
+    <div class="container pt-3">
+        {% for object in object_list %}
+            {% include 'yakumans/yakuman_card.html' %}
+        {% endfor %}
+    </div>
+{% endblock %}

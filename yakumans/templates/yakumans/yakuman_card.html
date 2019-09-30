@@ -1,0 +1,30 @@
+<div class="card yakuman-card">
+    <div class="row no-gutters">
+        <div class="col-md-4 col-lg-3 d-flex justify-content-center">
+            {% if object.picture %}
+                <a href="{{ object.get_absolute_url }}">
+                    <img src="{{ object.picture.url }}" class="yakuman-card-img">
+                </a>
+            {% endif %}
+        </div>
+        <div class="col-md-8 col-lg-9">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="{{ object.get_absolute_url }}">
+                        {{ object.yaku.0 }}
+                    </a>
+                </h5>
+                <p class="card-text">
+                    <a href="{{ object.winner.get_absolute_url }}">
+                        {{ object.winner }}
+                    </a>
+                </p>
+                <p class="card-text">
+                    <small class="text-muted">
+                        {{ object.timestamp|date:"Y年m月d日" }}
+                    </small>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

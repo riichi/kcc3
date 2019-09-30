@@ -1,6 +1,7 @@
 from typing import List
 
 from django.db import models
+from django_hosts import reverse
 
 from players.models import Player
 from yakumans import yakumans
@@ -68,6 +69,11 @@ class Yakuman(models.Model):
 
     picture = models.ImageField(upload_to='yakumans/', blank=True)
     comment = models.TextField(blank=True)
+
+    def get_absolute_url(self):
+        return reverse(
+            'yakuman-detail', host='yakumans', kwargs={'pk': self.pk}
+        )
 
     def __str__(self):
         yaku_str = ', '.join(x.name for x in self.yaku)
