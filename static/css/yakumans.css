@@ -1,0 +1,30 @@
+.yakuman-primary {
+    font-size: 3.5rem;
+    font-weight: bold;
+    line-height: 1.0;
+}
+
+.yakuman-secondary {
+    font-size: 3.0rem;
+    font-weight: 300;
+    line-height: 1.0;
+}
+
+.yakuman-winner {
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+
+    font-weight: bold;
+    font-size: 1.2rem;
+    line-height: 1.0;
+}
+
+.yakuman-date {
+    margin-bottom: 0.5rem;
+
+    font-size: 1rem;
+}
+
+.yakuman-deal-in {
+
+}

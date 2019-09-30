@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from django.views.generic import DetailView
 
-# Create your views here.
+from yakumans.models import Yakuman
+
+
+class YakumanDetailView(DetailView):
+    model = Yakuman
+    slug_field = 'id'
