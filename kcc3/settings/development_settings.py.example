@@ -11,7 +11,7 @@ SECRET_KEY = '3on#7^-^=nxx0_npqt3r_gr6c#5))vdt!v5n876_vv78em9b!v'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'localhost',
+    'fanpai.localhost',
     'yakuman.localhost',
 ]
 PARENT_HOST = 'localhost:8000'
