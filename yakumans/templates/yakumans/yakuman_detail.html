@@ -11,11 +11,16 @@
 
 {% block body %}
     <div class="container pt-3 text-center">
-        <div class="row justify-content-md-center pb-4">
-            <div class="col col-lg-6 col-md-6 col-sm-12">
-                <img src="{{ object.picture.url }}" class="img-fluid rounded"/>
+        {% if object.picture %}
+            <div class="row justify-content-center pb-4">
+                <div class="col col-lg-6 col-md-6 col-sm-12">
+                    <a href="{{ object.picture.url }}">
+                        <img src="{{ object.picture.url }}"
+                             class="img-fluid rounded"/>
+                    </a>
+                </div>
             </div>
-        </div>
+        {% endif %}
 
         {% for yaku in object.yaku %}
             <h2 class="yakuman-primary">{{ yaku.name }}</h2>
@@ -40,9 +45,11 @@
         <p class="yakuman-date">
             {{ object.timestamp|date:"Y年m月d日" }}
         </p>
-        <p class="yakuman-deal-in text-muted">
-            Dealt-in: {{ object.loser }}
-        </p>
+        {% if object.loser %}
+            <p class="yakuman-deal-in text-muted">
+                Dealt-in: {{ object.loser }}
+            </p>
+        {% endif %}
 
         {% if object.comment %}
             <hr>
