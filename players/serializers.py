@@ -10,3 +10,6 @@ class PlayerSerializer(serializers.ModelSerializer):
             'id', 'first_name', 'last_name', 'nickname', 'badge_set',
             'usma_id', 'discord_id'
         ]
+        read_only_fields = [
+            'badge_set'
+        ]
