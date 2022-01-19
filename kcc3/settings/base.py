@@ -82,6 +82,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'kcc3.wsgi.application'
 
 
+# Database
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
