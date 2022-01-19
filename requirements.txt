@@ -1,4 +1,4 @@
-celery==4.3.0
+celery==5.2.2
 Django==2.2.26
 django-celery-beat==1.5.0
 django-hosts==3.0
