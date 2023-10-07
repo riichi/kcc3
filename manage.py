@@ -5,10 +5,7 @@ import sys
 
 
 def main():
-    os.environ.setdefault(
-            'DJANGO_SETTINGS_MODULE', 
-            'kcc3.settings.local_settings'
-    )
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'kcc3.settings.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

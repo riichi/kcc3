@@ -1,4 +1,7 @@
 # kcc3
+[![Docker Images Build Status](https://github.com/riichi/kcc3/workflows/Docker%20Images/badge.svg)](https://github.com/riichi/kcc3/actions/workflows/docker.yml)
+[![License](https://shields.io/github/license/riichi/kcc3)](https://github.com/riichi/kcc3/blob/master/LICENSE)
+
 KCC3 is a simple badge server developed for
 [Kraków Chombo Club](https://chombo.club/). It puts the focus on providing
 simple interface, automate as much as possible and provide features especially
@@ -19,7 +22,6 @@ useful for Rīchi Mahjong players.
 ## Quickstart
 ```
 pip install -r requirements.txt
-cp kccbadgeserver/settings/{development_settings.py.example,local_settings.py}
 python manage.py migrate
 python manage.py runserver
 ```
