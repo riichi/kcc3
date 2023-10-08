@@ -1,0 +1,56 @@
+x-env:
+  &env-file
+  - ./.env.prod
+
+services:
+  web:
+    image: ghcr.io/riichi/kcc3-web:master
+    container_name: kcc3_web
+    volumes:
+      - ./static_files:/app/static
+      - ./media_files:/app/media
+    depends_on:
+      - db
+      - beat
+    env_file: *env-file
+
+  worker:
+    image: ghcr.io/riichi/kcc3-web:master
+    container_name: kcc3_worker
+    command: celery -A kcc3 worker --loglevel=info
+    depends_on:
+      - db
+      - rabbitmq
+    env_file: *env-file
+
+  beat:
+    image: ghcr.io/riichi/kcc3-web:master
+    container_name: kcc3_beat
+    command: celery -A kcc3 beat -S django --loglevel=info
+    depends_on:
+      - db
+      - rabbitmq
+      - worker
+    env_file: *env-file
+
+  db:
+    image: postgres:16
+    container_name: kcc3_db
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data/
+    env_file: *env-file
+
+  rabbitmq:
+    image: rabbitmq:3
+    container_name: kcc3_rabbitmq
+
+  proxy:
+    image: ghcr.io/riichi/kcc3-proxy:master
+    container_name: kcc3_proxy
+    volumes:
+      - ./static_files:/app/static
+      - ./media_files:/app/media
+    ports:
+      - 8000:80
+    depends_on:
+      - web

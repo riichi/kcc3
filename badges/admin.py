@@ -67,7 +67,6 @@ class BadgeAdmin(admin.ModelAdmin):
                 'fields': general_fields
             }),
             ('Endpoint', {
-                'classes': ('collapse',),
                 'fields': ('endpoint_url', 'refresh_interval', 'token'),
             }),
         )

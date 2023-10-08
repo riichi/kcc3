@@ -1,0 +1,64 @@
+x-env:
+  &env-file
+  - ./.env.dev
+
+services:
+  web:
+    build:
+      context: .
+    container_name: kcc3_web
+    volumes:
+      - static_volume:/app/static
+      - media_volume:/app/media
+    depends_on:
+      - db
+      - beat
+    env_file: *env-file
+
+  worker:
+    build:
+      context: .
+    container_name: kcc3_worker
+    command: celery -A kcc3 worker --loglevel=info
+    depends_on:
+      - db
+      - rabbitmq
+    env_file: *env-file
+
+  beat:
+    build:
+      context: .
+    container_name: kcc3_beat
+    command: celery -A kcc3 beat -S django --loglevel=info
+    depends_on:
+      - db
+      - rabbitmq
+      - worker
+    env_file: *env-file
+
+  db:
+    image: postgres:16
+    container_name: kcc3_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file: *env-file
+
+  rabbitmq:
+    image: rabbitmq:3
+    container_name: kcc3_rabbitmq
+
+  proxy:
+    build: ./nginx
+    container_name: kcc3_proxy
+    volumes:
+      - static_volume:/app/static
+      - media_volume:/app/media
+    ports:
+      - 8000:80
+    depends_on:
+      - web
+
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:
