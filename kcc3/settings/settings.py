@@ -8,11 +8,11 @@ from .base import *
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'CHANGE_ME')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.get('DEBUG', default=0))
+DEBUG = bool(os.environ.get('DEBUG', default=1))
 
 ALLOWED_HOSTS = os.environ.get(
     'DJANGO_ALLOWED_HOSTS',
-    'fanpai.localhost,yakuman.localhost,localhost'
+    'fanpai.localhost,yakuman.localhost,localhost,127.0.0.1'
 ).split(',')
 PARENT_HOST = os.environ.get('DJANGO_PARENT_HOST', 'localhost:8000')
 
@@ -34,7 +34,7 @@ DATABASES = {
 
 MEDIA_ROOT = os.environ.get('MEDIA_ROOT', os.path.join(BASE_DIR, 'media'))
 MEDIA_URL = '/media/'
-STATIC_ROOT = os.environ.get('STATIC_ROOT', os.path.join(BASE_DIR, 'static'))
+STATIC_ROOT = os.environ.get('STATIC_ROOT', os.path.join(BASE_DIR, 'staticfiles'))
 
 CELERY_BROKER_URL = os.environ.get(
     'CELERY_BROKER', 'amqp://guest:guest@localhost:5672//')
