@@ -1,4 +1,6 @@
-version: '3'
+x-env:
+  &env-file
+  - ./.env.prod
 
 services:
   web:
@@ -10,8 +12,7 @@ services:
     depends_on:
       - db
       - beat
-    env_file:
-      - ./.env.prod
+    env_file: *env-file
 
   worker:
     image: ghcr.io/riichi/kcc3-web:master
@@ -20,8 +21,7 @@ services:
     depends_on:
       - db
       - rabbitmq
-    env_file:
-      - ./.env.prod
+    env_file: *env-file
 
   beat:
     image: ghcr.io/riichi/kcc3-web:master
@@ -31,16 +31,14 @@ services:
       - db
       - rabbitmq
       - worker
-    env_file:
-      - ./.env.prod
+    env_file: *env-file
 
   db:
     image: postgres:16
     container_name: kcc3_db
     volumes:
       - ./pgdata:/var/lib/postgresql/data/
-    env_file:
-      - ./.env.prod
+    env_file: *env-file
 
   rabbitmq:
     image: rabbitmq:3

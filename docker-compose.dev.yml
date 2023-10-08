@@ -1,4 +1,6 @@
-version: '3'
+x-env:
+  &env-file
+  - ./.env.dev
 
 services:
   web:
@@ -11,8 +13,7 @@ services:
     depends_on:
       - db
       - beat
-    env_file:
-      - ./.env.dev
+    env_file: *env-file
 
   worker:
     build:
@@ -22,8 +23,7 @@ services:
     depends_on:
       - db
       - rabbitmq
-    env_file:
-      - ./.env.dev
+    env_file: *env-file
 
   beat:
     build:
@@ -34,16 +34,14 @@ services:
       - db
       - rabbitmq
       - worker
-    env_file:
-      - ./.env.dev
+    env_file: *env-file
 
   db:
     image: postgres:16
     container_name: kcc3_db
     volumes:
       - postgres_data:/var/lib/postgresql/data/
-    env_file:
-      - ./.env.dev
+    env_file: *env-file
 
   rabbitmq:
     image: rabbitmq:3
