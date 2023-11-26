@@ -9,7 +9,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.11"
 celery = "5.3.4"
-django = "4.2.6"
+django = "4.2.7"
 django-celery-beat = "2.5.0"
 django-hosts = "5.2"
 djangorestframework = "3.14.0"
