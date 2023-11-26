@@ -33,6 +33,12 @@ Make sure you have [RabbitMQ](https://www.rabbitmq.com/download.html) installed.
 celery -A kcc3 worker --beat --scheduler django --loglevel=info
 ```
 
+### `pre-commit`
+We encourage contributors to use predefined [`pre-commit`](https://pre-commit.com/) hooks — to install them in your local repo, make sure you have `pre-commit` installed and run:
+
+```shell
+pre-commit install
+```
 
 ## Creating own badge clients
 Any third party can create their own dynamic badge by setting up a so called
