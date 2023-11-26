@@ -9,4 +9,4 @@ class Chombo(models.Model):
     comment = models.TextField(blank=True)
 
     def __str__(self):
-        return f'{self.player} at {self.timestamp}'
+        return f"{self.player} at {self.timestamp}"

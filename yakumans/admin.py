@@ -9,7 +9,7 @@ from yakumans.models import Yakuman
 
 
 class YakumanFilter(FieldListFilter):
-    title = 'yaku'
+    title = "yaku"
 
     def __init__(self, field, request, params, model, model_admin, field_path):
         self.lookup_kwarg = field_path
@@ -21,7 +21,7 @@ class YakumanFilter(FieldListFilter):
 
     def queryset(self, request, queryset):
         if self.lookup_val:
-            return queryset.filter(yaku__contains=f'{self.lookup_val};')
+            return queryset.filter(yaku__contains=f"{self.lookup_val};")
 
         return queryset
 
@@ -30,23 +30,21 @@ class YakumanFilter(FieldListFilter):
 
     def choices(self, changelist):
         yield {
-            'selected': self.lookup_val is None,
-            'query_string': changelist.get_query_string(
-                remove=[self.lookup_kwarg]),
-            'display': 'All',
+            "selected": self.lookup_val is None,
+            "query_string": changelist.get_query_string(remove=[self.lookup_kwarg]),
+            "display": "All",
         }
         for yaku in yakumans.YAKUMANS_BY_NAME:
             yield {
-                'selected': self.lookup_val == yaku.id,
-                'query_string': changelist.get_query_string(
-                    {self.lookup_kwarg: yaku.id}),
-                'display': yaku.name,
+                "selected": self.lookup_val == yaku.id,
+                "query_string": changelist.get_query_string({self.lookup_kwarg: yaku.id}),
+                "display": yaku.name,
             }
 
 
 class YakumanAdminForm(forms.ModelForm):
     def clean_picture(self):
-        orig_file = self.cleaned_data['picture']
+        orig_file = self.cleaned_data["picture"]
         if orig_file is None:
             return orig_file
 
@@ -62,22 +60,28 @@ class YakumanAdminForm(forms.ModelForm):
 class YakumanAdmin(admin.ModelAdmin):
     form = YakumanAdminForm
     search_fields = (
-        'winner__id', 'winner__first_name', 'winner__last_name',
-        'winner__nickname',
-        'loser__id', 'loser__first_name', 'loser__last_name',
-        'loser__nickname',
-        'timestamp', 'yaku', 'comment'
+        "winner__id",
+        "winner__first_name",
+        "winner__last_name",
+        "winner__nickname",
+        "loser__id",
+        "loser__first_name",
+        "loser__last_name",
+        "loser__nickname",
+        "timestamp",
+        "yaku",
+        "comment",
     )
-    list_display = ('timestamp', 'yaku', 'winner', 'loser')
-    list_display_links = ('timestamp', 'winner')
+    list_display = ("timestamp", "yaku", "winner", "loser")
+    list_display_links = ("timestamp", "winner")
     list_filter = (
-        'timestamp',
-        ('yaku', YakumanFilter),
-        ('winner', admin.RelatedOnlyFieldListFilter),
-        ('loser', admin.RelatedOnlyFieldListFilter),
+        "timestamp",
+        ("yaku", YakumanFilter),
+        ("winner", admin.RelatedOnlyFieldListFilter),
+        ("loser", admin.RelatedOnlyFieldListFilter),
     )
-    ordering = ('-timestamp',)
-    date_hierarchy = 'timestamp'
+    ordering = ("-timestamp",)
+    date_hierarchy = "timestamp"
 
 
 admin.site.register(Yakuman, YakumanAdmin)

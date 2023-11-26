@@ -6,4 +6,4 @@ from .models import Badge
 class BadgeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Badge
-        fields = ['id', 'title', 'description', 'image', 'players']
+        fields = ("id", "title", "description", "image", "players")

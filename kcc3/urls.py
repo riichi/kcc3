@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import include, path
 from rest_framework import routers
 
 import badges.urls
@@ -27,29 +27,27 @@ from chombos.viewsets import ChomboViewSet
 from players.viewsets import PlayerViewSet
 
 router = routers.DefaultRouter()
-router.register('chombos', ChomboViewSet)
-router.register('badges', BadgeViewSet)
-router.register('players', PlayerViewSet)
+router.register("chombos", ChomboViewSet)
+router.register("badges", BadgeViewSet)
+router.register("players", PlayerViewSet)
 
 admin_urlpatterns = [
-    path('badges/', include(badges.urls.admin_urlpatters)),
-    path('', admin.site.urls),
+    path("badges/", include(badges.urls.admin_urlpatters)),
+    path("", admin.site.urls),
 ]
 
 badgeclients_urlpatterns = [
-    path('badges/', include(badges.urls.badgeclients_urlpatterns)),
-    path('chombos/', include(chombos.urls.badgeclients_urlpatterns)),
+    path("badges/", include(badges.urls.badgeclients_urlpatterns)),
+    path("chombos/", include(chombos.urls.badgeclients_urlpatterns)),
 ]
 
 urlpatterns = [
-    path('api/', include(router.urls)),
-    path('api-auth/',
-         include('rest_framework.urls', namespace='rest_framework')),
-
-    path('admin/', include(admin_urlpatterns)),
-    path('badge-clients/', include(badgeclients_urlpatterns)),
-
-    path('', include(badges.urls.global_urlpatterns)),
-    path('badges/', include(badges.urls.urlpatterns)),
-    path('players/', include(players.urls.urlpatterns)),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path("api/", include(router.urls)),
+    path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
+    path("admin/", include(admin_urlpatterns)),
+    path("badge-clients/", include(badgeclients_urlpatterns)),
+    path("", include(badges.urls.global_urlpatterns)),
+    path("badges/", include(badges.urls.urlpatterns)),
+    path("players/", include(players.urls.urlpatterns)),
+    *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
+]

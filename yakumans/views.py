@@ -5,9 +5,9 @@ from yakumans.models import Yakuman
 
 class YakumanListView(ListView):
     model = Yakuman
-    ordering = ('-timestamp',)
+    ordering = ("-timestamp",)
 
 
 class YakumanDetailView(DetailView):
     model = Yakuman
-    slug_field = 'id'
+    slug_field = "id"

@@ -11,8 +11,11 @@ RUN apt-get update && \
     apt-get install -y netcat-openbsd zlib1g-dev libjpeg-dev gcc
 
 RUN pip install --upgrade pip
-COPY ./requirements.txt .
-RUN pip install -r requirements.txt
+COPY pyproject.toml pyproject.toml
+COPY poetry.lock poetry.lock
+RUN pip install poetry==1.7.0 \
+  && poetry config virtualenvs.create false \
+  && poetry install --no-interaction --no-ansi
 
 COPY . .
 

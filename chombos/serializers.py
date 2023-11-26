@@ -6,4 +6,4 @@ from chombos.models import Chombo
 class ChomboSerializer(serializers.ModelSerializer):
     class Meta:
         model = Chombo
-        fields = '__all__'
+        fields = "__all__"

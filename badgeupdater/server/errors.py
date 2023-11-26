@@ -6,6 +6,6 @@ class BadgeUpdateError(Exception):
     def __str__(self):
         message = self.message
         if self.status_code is not None:
-            message = f'HTTP {self.status_code}, body: {message}'
+            message = f"HTTP {self.status_code}, body: {message}"
 
-        return f'Could not update badge: {message}'
+        return f"Could not update badge: {message}"

@@ -1,5 +1,3 @@
-from typing import List
-
 from rest_framework.decorators import permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.request import Request
@@ -8,8 +6,7 @@ from rest_framework.views import APIView
 
 from badgeupdater.client.auth import HMACAuth
 from badgeupdater.models import BadgeUpdateRequest, BadgeUpdateResponse
-from badgeupdater.serializers import (
-    BadgeUpdateRequestSerializer, BadgeUpdateResponseSerializer)
+from badgeupdater.serializers import BadgeUpdateRequestSerializer, BadgeUpdateResponseSerializer
 
 
 @permission_classes((AllowAny,))
@@ -34,9 +31,9 @@ class BadgeClient(APIView):
         return BadgeUpdateResponse(players)
 
     def get_authenticators(self):
-        return HMACAuth(self),
+        return (HMACAuth(self),)
 
-    def get_badge_player_ids(self, request: BadgeUpdateRequest) -> List[str]:
+    def get_badge_player_ids(self, request: BadgeUpdateRequest) -> list[str]:
         raise NotImplementedError
 
     def get_token(self, badge_id: str) -> str:
