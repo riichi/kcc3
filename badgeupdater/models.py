@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from typing import List
 
 
 @dataclass
@@ -9,4 +8,4 @@ class BadgeUpdateRequest:
 
 @dataclass
 class BadgeUpdateResponse:
-    players: List[str]
+    players: list[str]

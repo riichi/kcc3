@@ -23,6 +23,9 @@ sqlparse = "0.4.4"
 [tool.ruff]
 line-length = 120
 target-version = "py311"
+exclude = [
+  "*/migrations"
+]
 
 [tool.ruff.lint]
 select = [

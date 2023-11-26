@@ -7,6 +7,6 @@ class HmacAuth(AuthBase):
         self.token = token
 
     def __call__(self, r: PreparedRequest):
-        r.headers['Authorization'] = f'Token {self.token}'
+        r.headers["Authorization"] = f"Token {self.token}"
 
         return r
