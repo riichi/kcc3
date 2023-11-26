@@ -332,13 +332,13 @@ tzdata = "*"
 
 [[package]]
 name = "django-hosts"
-version = "5.2"
+version = "6.0"
 description = "Dynamic and static host resolving for Django. Maps hostnames to URLconfs."
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.8"
 files = [
-    {file = "django-hosts-5.2.tar.gz", hash = "sha256:32be764dbb0714878a1e6ba5c771418946eb0a17079a14f12e1afa90f182f191"},
-    {file = "django_hosts-5.2-py3-none-any.whl", hash = "sha256:cc4128b3020f059faaad6adb0f8a6784a72b74f979ef2c0d640677d872422dbe"},
+    {file = "django-hosts-6.0.tar.gz", hash = "sha256:e7aec357504d36f384c65fba67deabc4552f36f347b96bb7a3d131a1250d7299"},
+    {file = "django_hosts-6.0-py3-none-any.whl", hash = "sha256:34a97a183b3fb8a00de3e0a8af5355a25ff5203019d2e213edd8f12c330cc303"},
 ]
 
 [[package]]
@@ -749,4 +749,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "1d9eea0806d668a535b74b819109da0f65a912af78998ac1c6fb65e0f060e74a"
+content-hash = "5ec0887b8e7534afc56038141ad90291504ea68a903243bde149c1b9cd5e21fd"
