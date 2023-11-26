@@ -1,0 +1,44 @@
+[tool.poetry]
+name = "kcc3"
+version = "0.1.0"
+description = ""
+authors = ["Mateusz Maćkowski <m4tx@m4tx.pl>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+celery = "5.3.4"
+django = "4.2.6"
+django-celery-beat = "2.5.0"
+django-hosts = "5.2"
+djangorestframework = "3.14.0"
+gunicorn = "21.2.0"
+pillow = "10.0.1"
+psycopg2-binary = "2.9.9"
+pytz = "2023.3.post1"
+requests = "2.31.0"
+sqlparse = "0.4.4"
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = [
+  "B",
+  "C4",
+  "DTZ",
+  "E",
+  "F",
+  "G",
+  "I",
+  "PIE",
+  "RUF",
+  "UP",
+  "W",
+]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
