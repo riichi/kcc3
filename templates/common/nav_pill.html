@@ -1,0 +1,3 @@
+<li class="nav-item">
+    <a {% if request.resolver_match.url_name == url_name %}class="nav-link active" aria-current="page"{% else %}class="nav-link"{% endif %} href="{% url url_name %}">{{ link_text }}</a>
+</li>

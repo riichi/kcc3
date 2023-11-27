@@ -1,0 +1,33 @@
+{% extends 'common/base.html' %}
+{% load breadcrumbs %}
+
+{% block title %}Club{% endblock %}
+
+{% block body %}
+    <div class="container pt-3">
+        {% breadcrumbs %}
+
+        <h1>Club</h1>
+
+        <div class="row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Members</h5>
+                        <p class="card-text">Manage club members. Create new members, see who hasn't paid their membership fee, or check out their e-mail addresses.</p>
+                        <a href="{% url "member-list" %}" class="btn btn-primary">Manage members</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Fees</h5>
+                        <p class="card-text">View, add, or edit membership fees.</p>
+                        <a href="{% url "fee-list" %}" class="btn btn-primary">Manage fees</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

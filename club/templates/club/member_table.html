@@ -1,0 +1,69 @@
+{% load kcc3 %}
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+        <thead>
+        <tr>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Nickname</th>
+            <th scope="col">Workspace E-mail</th>
+            <th scope="col">Personal E-mail</th>
+            <th scope="col">Fee paid</th>
+            <th scope="col">Role</th>
+            <th scope="col">Member since</th>
+            <th scope="col">Member until</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for member in members %}
+            <tr>
+                <td>
+                    <a href="{{ member.get_absolute_url }}">
+                        {{ member.first_name|placeholder }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ member.get_absolute_url }}">
+                        {{ member.last_name|placeholder }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ member.get_absolute_url }}">
+                        {{ member.nickname|placeholder }}
+                    </a>
+                </td>
+                <td>
+                    {% if member.workspace_email %}
+                        <a href="mailto:{{ member.workspace_email }}">
+                            {{ member.workspace_email|placeholder }}
+                        </a>
+                    {% else %}
+                        {% placeholder %}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if member.workspace_email %}
+                        <a href="mailto:{{ member.personal_email }}">
+                            {{ member.personal_email|placeholder }}
+                        </a>
+                    {% else %}
+                        {% placeholder %}
+                    {% endif %}
+                </td>
+                <td>
+                    {% include "common/bool.html" with value=member.current_fee_paid %}
+                </td>
+                <td>
+                    {{ member.current_role }}
+                </td>
+                <td>
+                    {{ member.active_since|dateformat }}
+                </td>
+                <td>
+                    {{ member.active_until|dateformat }}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

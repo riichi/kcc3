@@ -19,6 +19,7 @@ psycopg2-binary = "2.9.9"
 pytz = "2023.3.post1"
 requests = "2.31.0"
 sqlparse = "0.4.4"
+django-bootstrap5 = "^23.3"
 
 [tool.ruff]
 line-length = 120
@@ -28,19 +29,7 @@ exclude = [
 ]
 
 [tool.ruff.lint]
-select = [
-  "B",
-  "C4",
-  "DTZ",
-  "E",
-  "F",
-  "G",
-  "I",
-  "PIE",
-  "RUF",
-  "UP",
-  "W",
-]
+select = ["ALL"]
 
 [build-system]
 requires = ["poetry-core"]
