@@ -21,6 +21,7 @@ from rest_framework import routers
 
 import badges.urls
 import chombos.urls
+import club.urls
 import players.urls
 from badges.viewsets import BadgeViewSet
 from chombos.viewsets import ChomboViewSet
@@ -42,12 +43,13 @@ badgeclients_urlpatterns = [
 ]
 
 urlpatterns = [
-    path("api/", include(router.urls)),
-    path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
-    path("admin/", include(admin_urlpatterns)),
-    path("badge-clients/", include(badgeclients_urlpatterns)),
     path("", include(badges.urls.global_urlpatterns)),
+    path("admin/", include(admin_urlpatterns)),
+    path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
+    path("api/", include(router.urls)),
+    path("badge-clients/", include(badgeclients_urlpatterns)),
     path("badges/", include(badges.urls.urlpatterns)),
+    path("club/", include(club.urls.urlpatterns)),
     path("players/", include(players.urls.urlpatterns)),
     *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
 ]

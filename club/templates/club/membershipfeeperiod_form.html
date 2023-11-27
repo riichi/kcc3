@@ -1,0 +1,20 @@
+{% extends 'common/base.html' %}
+{% load django_bootstrap5 %}
+{% load breadcrumbs %}
+
+{% block title %}Fees - Create{% endblock %}
+
+{% block body %}
+    <div class="container pt-3">
+        {% breadcrumbs %}
+
+        <h2>Create fee</h2>
+
+        <form action="" method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+
+            {% bootstrap_button "Create" button_type="submit" button_class="btn-primary" %}
+        </form>
+    </div>
+{% endblock %}

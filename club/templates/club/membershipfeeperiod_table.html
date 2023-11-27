@@ -1,0 +1,37 @@
+{% load kcc3 %}
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Fee</th>
+            <th scope="col">Active since</th>
+            <th scope="col">Active until</th>
+            <th scope="col">Members paid</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for fee in fees %}
+            <tr>
+                <td>
+                    <a href="{{ fee.get_absolute_url }}">
+                        {{ fee.name }}
+                    </a>
+                </td>
+                <td>
+                    {{ fee.fee|floatformat:2 }}
+                </td>
+                <td>
+                    {{ fee.active_since|dateformat }}
+                </td>
+                <td>
+                    {{ fee.active_until|dateformat }}
+                </td>
+                <td>
+                    {{ fee.members.count }}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
