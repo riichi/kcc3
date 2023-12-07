@@ -1,0 +1,115 @@
+{% extends 'common/base.html' %}
+{% load breadcrumbs %}
+{% load kcc3 %}
+
+{% block title %}{{ object }}{% endblock %}
+
+{% block body %}
+    <div class="container pt-3">
+        {% breadcrumbs %}
+
+        <h1>{{ object }}</h1>
+
+        <dl class="row">
+            <dt class="col-sm-3">First name</dt>
+            <dd class="col-sm-9">{{ object.first_name }}</dd>
+
+            <dt class="col-sm-3">Last name</dt>
+            <dd class="col-sm-9">{{ object.last_name }}</dd>
+
+            <dt class="col-sm-3">Nickname</dt>
+            <dd class="col-sm-9">{{ object.nickname|placeholder }}</dd>
+
+            <dt class="col-sm-3">Workspace email</dt>
+            <dd class="col-sm-9">
+                {% if member.workspace_email %}
+                    <a href="mailto:{{ member.workspace_email }}">
+                        {{ member.workspace_email }}
+                    </a>
+                {% else %}
+                    {% placeholder %}
+                {% endif %}
+            </dd>
+
+            <dt class="col-sm-3">Personal email</dt>
+            <dd class="col-sm-9">
+                {% if member.personal_email %}
+                    <a href="mailto:{{ member.personal_email }}">
+                        {{ member.personal_email }}
+                    </a>
+                {% else %}
+                    {% placeholder %}
+                {% endif %}
+            </dd>
+
+            <dt class="col-sm-3">Address</dt>
+            <dd class="col-sm-9">{{ object.address|linebreaksbr }}</dd>
+
+            <dt class="col-sm-3">Discord nickname</dt>
+            <dd class="col-sm-9">{{ object.discord_nickname|placeholder }}</dd>
+
+            <dt class="col-sm-3">Discord ID</dt>
+            <dd class="col-sm-9">{{ object.discord_id|placeholder }}</dd>
+
+            <dt class="col-sm-3">Active since</dt>
+            <dd class="col-sm-9">{{ object.active_since|dateformat }}</dd>
+
+            <dt class="col-sm-3">Active until</dt>
+            <dd class="col-sm-9">{{ object.active_until|dateformat }}</dd>
+
+            <dt class="col-sm-3">Current fee paid</dt>
+            <dd class="col-sm-9">
+                {% include "common/bool.html" with value=object.current_fee_paid %}
+            </dd>
+
+            <dt class="col-sm-3">Current role</dt>
+            <dd class="col-sm-9">{{ member.current_role }}</dd>
+        </dl>
+
+        <h2>Fees</h2>
+        <table class="table table-striped table-sm">
+            <thead>
+            <tr>
+                {% for fee in member.relevant_fees %}
+                    <th scope="col">{{ fee.name }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                {% for fee in member.relevant_fees %}
+                    <td class="d-none d-sm-table-cell">
+                        {% if fee in member.paid_fees %}
+                            {% include "common/bool.html" with value=True %}
+                        {% else %}
+                            {% include "common/bool.html" with value=False %}
+                        {% endif %}
+                    </td>
+                {% endfor %}
+            </tr>
+            </tbody>
+        </table>
+
+        <h2>Roles</h2>
+        <table class="table table-striped table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Role name</th>
+                <th scope="col">Active since</th>
+                <th scope="col">Active until</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for role in member.memberrole_set.all %}
+                <tr>
+                    <td>{{ role.name }}</td>
+                    <td>{{ role.active_since|dateformat }}</td>
+                    <td>{{ role.active_until|dateformat }}</td>
+                </tr>
+            {% endfor %}
+            <tr>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

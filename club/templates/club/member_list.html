@@ -1,0 +1,29 @@
+{% extends 'common/base.html' %}
+{% load breadcrumbs %}
+
+{% block title %}Members{% endblock %}
+
+{% block body %}
+    <div class="container pt-3">
+        {% breadcrumbs %}
+
+        <h2>Members</h2>
+
+        <ul class="nav nav-pills nav-fill mb-3">
+            {% include "common/nav_pill.html" with url_name="member-list" link_text="All" %}
+            {% include "common/nav_pill.html" with url_name="member-active-list" link_text="Active" %}
+            {% include "common/nav_pill.html" with url_name="member-inactive-list" link_text="Inactive" %}
+            {% include "common/nav_pill.html" with url_name="member-fee-overdue-list" link_text="Fee overdue" %}
+            {% include "common/nav_pill.html" with url_name="member-board-list" link_text="Board" %}
+            {% include "common/nav_pill.html" with url_name="member-audit-committee-list" link_text="Audit committee" %}
+        </ul>
+
+        <div class="mb-1">
+            <a class="btn btn-primary btn-sm" href="{% url 'member-create' %}" role="button"><i class="bi bi-person-fill-add"></i> Create member</a>
+            <a class="btn btn-secondary btn-sm" href="#" role="button"><i class="bi bi-file-earmark-arrow-down"></i> Download spreadsheet</a>
+            <a class="btn btn-secondary btn-sm" href="#" role="button"><i class="bi bi-envelope-fill"></i> Copy personal emails</a>
+        </div>
+
+        {% include 'club/member_table.html' with members=object_list %}
+    </div>
+{% endblock %}

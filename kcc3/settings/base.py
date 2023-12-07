@@ -31,6 +31,7 @@ THIRD_PARTY_APPS = [
     "django_hosts",
     "rest_framework",
     "rest_framework.authtoken",
+    "django_bootstrap5",
 ]
 
 PROJECT_APPS = [
@@ -39,6 +40,7 @@ PROJECT_APPS = [
     "players",
     "chombos",
     "yakumans",
+    "club",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
@@ -138,6 +140,20 @@ REST_FRAMEWORK = {
     ],
 }
 
+
+# Bootstrap
+BOOTSTRAP5 = {
+    "css_url": {
+        "url": "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css",
+        "integrity": "sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN",
+        "crossorigin": "anonymous",
+    },
+    "javascript_url": {
+        "url": "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js",
+        "integrity": "sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL",
+        "crossorigin": "anonymous",
+    },
+}
 
 # Custom settings
 BADGE_IMAGE_MIN_RES = 96

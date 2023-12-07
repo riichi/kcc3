@@ -1,0 +1,18 @@
+{% extends 'common/base.html' %}
+{% load breadcrumbs %}
+
+{% block title %}Members{% endblock %}
+
+{% block body %}
+    <div class="container pt-3">
+        {% breadcrumbs %}
+
+        <h2>Fees</h2>
+
+        <div class="mb-1">
+            <a class="btn btn-primary btn-sm" href="{% url 'fee-create' %}" role="button"><i class="bi bi-plus-circle-fill"></i> Create fee</a>
+        </div>
+
+        {% include 'club/membershipfeeperiod_table.html' with fees=object_list %}
+    </div>
+{% endblock %}
