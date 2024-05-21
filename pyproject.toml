@@ -8,7 +8,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-celery = "5.3.6"
+celery = "5.4.0"
 django = "4.2.11"
 django-celery-beat = "2.6.0"
 django-hosts = "6.0"
@@ -17,7 +17,7 @@ gunicorn = "22.0.0"
 pillow = "10.3.0"
 psycopg2-binary = "2.9.9"
 pytz = "2024.1"
-requests = "2.32.0"
+requests = "2.32.1"
 sqlparse = "0.5.0"
 
 [tool.ruff]
