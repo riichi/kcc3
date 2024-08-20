@@ -51,6 +51,6 @@ services:
       - ./static_files:/app/static
       - ./media_files:/app/media
     ports:
-      - 8000:80
+      - "8000:80"
     depends_on:
       - web

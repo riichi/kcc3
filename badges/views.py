@@ -1,3 +1,4 @@
+import django.conf
 from django.contrib import messages
 from django.db import IntegrityError
 from django.db.models import Count
@@ -19,6 +20,7 @@ class BadgeRankingView(ListView):
     template_name = "badges/ranking.html"
 
     def get_queryset(self):
+        print(django.conf.settings.CSRF_TRUSTED_ORIGINS)
         players = Player.objects.all().annotate(num_badges=Count("badge")).order_by("-num_badges")
 
         for i in range(len(players)):

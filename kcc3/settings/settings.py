@@ -15,6 +15,7 @@ DEBUG = bool(os.environ.get("DEBUG", default=1))
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "fanpai.localhost,yakuman.localhost,localhost,127.0.0.1").split(
     ","
 )
+CSRF_TRUSTED_ORIGINS = list(filter(None, os.environ.get("DJANGO_CSRF_TRUSTED_ORIGINS", "").split(",")))
 PARENT_HOST = os.environ.get("DJANGO_PARENT_HOST", "localhost:8000")
 
 

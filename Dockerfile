@@ -8,7 +8,7 @@ ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update && \
     apt-get -y upgrade && \
-    apt-get install -y netcat-openbsd zlib1g-dev libjpeg-dev gcc
+    apt-get install -y netcat-openbsd zlib1g-dev libjpeg-dev gcc libimage-exiftool-perl
 
 RUN pip install --upgrade pip
 COPY pyproject.toml pyproject.toml
