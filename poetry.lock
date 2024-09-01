@@ -315,18 +315,19 @@ bcrypt = ["bcrypt"]
 
 [[package]]
 name = "django-celery-beat"
-version = "2.6.0"
+version = "2.7.0"
 description = "Database-backed Periodic Tasks."
 optional = false
-python-versions = "*"
+python-versions = ">=3.8"
 files = [
-    {file = "django-celery-beat-2.6.0.tar.gz", hash = "sha256:f75b2d129731f1214be8383e18fae6bfeacdb55dffb2116ce849222c0106f9ad"},
+    {file = "django_celery_beat-2.7.0-py3-none-any.whl", hash = "sha256:851c680d8fbf608ca5fecd5836622beea89fa017bc2b3f94a5b8c648c32d84b1"},
+    {file = "django_celery_beat-2.7.0.tar.gz", hash = "sha256:8482034925e09b698c05ad61c36ed2a8dbc436724a3fe119215193a4ca6dc967"},
 ]
 
 [package.dependencies]
 celery = ">=5.2.3,<6.0"
 cron-descriptor = ">=1.2.32"
-Django = ">=2.2,<5.1"
+Django = ">=2.2,<5.2"
 django-timezone-field = ">=5.0"
 python-crontab = ">=2.3.4"
 tzdata = "*"
@@ -780,4 +781,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "1bbbf2a2e6bbf972c0c728369a72473cdb8911bedb416613388f19e66b230723"
+content-hash = "f17999b0405a62dcb6ad2ce51806ed8116835754d5d0806cdb5f010ff6ad7dde"
