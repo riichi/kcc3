@@ -7,17 +7,10 @@
         USMA ID:
         {% if object.usma_id %}
             <span class="font-weight-bold">{{ object.usma_id }}</span>
-            <a href="https://ranking.cvgo.re/ranking/player/{{ object.usma_id }}"
+            <a href="https://ranking.cvgo.re/players/{{ object.usma_id }}"
                target="_blank">
                 (ranking)
             </a>
-        {% else %}
-            <span class="font-italic">None</span>
-        {% endif %}
-        <br>
-        Discord ID:
-        {% if object.discord_id %}
-            <span class="font-weight-bold">{{ object.discord_id }}</span>
         {% else %}
             <span class="font-italic">None</span>
         {% endif %}
