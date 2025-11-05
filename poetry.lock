@@ -349,14 +349,14 @@ tzdata = "*"
 
 [[package]]
 name = "django-hosts"
-version = "6.0"
+version = "7.0.0"
 description = "Dynamic and static host resolving for Django. Maps hostnames to URLconfs."
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "django-hosts-6.0.tar.gz", hash = "sha256:e7aec357504d36f384c65fba67deabc4552f36f347b96bb7a3d131a1250d7299"},
-    {file = "django_hosts-6.0-py3-none-any.whl", hash = "sha256:34a97a183b3fb8a00de3e0a8af5355a25ff5203019d2e213edd8f12c330cc303"},
+    {file = "django_hosts-7.0.0-py3-none-any.whl", hash = "sha256:93d3c941336463fd0c9377c1773d1c53a49606fa72656ed7ddfa474d2fe1f907"},
+    {file = "django_hosts-7.0.0.tar.gz", hash = "sha256:08006bc09f5af69638721ced0657f24044835a22a608732ee1004adc9c95fb7c"},
 ]
 
 [[package]]
@@ -824,4 +824,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.11"
-content-hash = "0b87358938fb8b5cf1ae3ad98e43e076ff1dd425cf17e0cb3a2b639b48669dd4"
+content-hash = "e3af7dab17dcedb3be0ea0a73af0628b86bcbddcb60ab724e907d8191b9347cc"
