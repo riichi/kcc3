@@ -25,4 +25,4 @@ ENV PATH="/app/web/.venv/bin:$PATH"
 
 EXPOSE 8000
 ENTRYPOINT ["/app/web/entrypoint.sh"]
-CMD ["granian", "--interface", "wsgi", "kcc3.wsgi:application", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uv", "run", "granian", "--interface", "wsgi", "kcc3.wsgi:application", "--host", "0.0.0.0", "--port", "8000"]
