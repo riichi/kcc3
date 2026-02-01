@@ -21,16 +21,16 @@ useful for Rīchi Mahjong players.
 
 ## Quickstart
 ```
-poetry install
-poetry run python manage.py migrate
-poetry run python manage.py runserver
+uv sync
+uv run python manage.py migrate
+uv run python manage.py runserver
 ```
 
 ### Running the workers
 Make sure you have [RabbitMQ](https://www.rabbitmq.com/download.html) installed.
 
 ```
-poetry run celery -A kcc3 worker --beat --scheduler django --loglevel=info
+uv run celery -A kcc3 worker --beat --scheduler django --loglevel=info
 ```
 
 ### `pre-commit`
