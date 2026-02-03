@@ -17,7 +17,7 @@ services:
   worker:
     image: ghcr.io/riichi/kcc3-web:master
     container_name: kcc3_worker
-    command: celery -A kcc3 worker --loglevel=info
+    command: uv run celery -A kcc3 worker --loglevel=info
     depends_on:
       - db
       - rabbitmq
@@ -26,7 +26,7 @@ services:
   beat:
     image: ghcr.io/riichi/kcc3-web:master
     container_name: kcc3_beat
-    command: celery -A kcc3 beat -S django --loglevel=info
+    command: uv run celery -A kcc3 beat -S django --loglevel=info
     depends_on:
       - db
       - rabbitmq
