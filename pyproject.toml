@@ -5,7 +5,7 @@ description = ""
 authors = [
     { name = "Mateusz Maćkowski", email = "m4tx@m4tx.pl" }
 ]
-license = { text = "MIT" }
+license = "MIT"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
