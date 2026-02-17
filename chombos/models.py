@@ -9,7 +9,7 @@ class Chombo(models.Model):
     timestamp = models.DateTimeField(db_index=True)
     comment = models.TextField(blank=True)
     weight = models.DecimalField(
-        max_digits=3, decimal_places=1, default=1, validators=[MinValueValidator(1), MaxValueValidator(6)]
+        max_digits=2, decimal_places=1, default=1, validators=[MinValueValidator(1), MaxValueValidator(6)]
     )
 
     def __str__(self):
