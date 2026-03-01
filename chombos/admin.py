@@ -12,7 +12,7 @@ class ChomboAdmin(admin.ModelAdmin):
         "timestamp",
         "comment",
     )
-    list_display = ("player", "timestamp", "comment")
+    list_display = ("player", "timestamp", "comment", "weight")
     list_display_links = ("player", "timestamp")
     list_filter = (
         "timestamp",
