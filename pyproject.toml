@@ -9,16 +9,16 @@ license = "MIT"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "celery==5.6.2",
+    "celery==5.6.3",
     "django==5.2.12",
     "django-celery-beat==2.9.0",
     "django-hosts==7.0.0",
-    "djangorestframework==3.16.1",
+    "djangorestframework==3.17.1",
     "granian>=1.7.0",
-    "pillow==12.1.1",
+    "pillow==12.2.0",
     "psycopg2-binary==2.9.11",
     "pytz==2025.2",
-    "requests==2.33.0",
+    "requests==2.33.1",
     "sqlparse==0.5.5",
 ]
 
