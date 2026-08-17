@@ -19,7 +19,7 @@ dependencies = [
     "psycopg2-binary==2.9.12",
     "pytz==2026.3.post1",
     "requests==2.34.2",
-    "sqlparse==0.5.5",
+    "sqlparse==0.6.0",
 ]
 
 [tool.uv]
